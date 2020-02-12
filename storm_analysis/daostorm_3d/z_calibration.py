@@ -268,8 +268,9 @@ def plotFit(wx, wy, z, t_wx, t_wy, t_z, wx_params, wy_params, z_range = 0.6):
     legend.get_frame().set_edgecolor('black')
     pyplot.xlabel("microns")
     pyplot.ylabel("pixels")
+    pyplot.savefig('fit') # Usually, I prefer saving the figure for future reference.
     pyplot.show()
-
+    
 
 def prettyPrint(wx_params, wy_params, pixel_size):
     """
