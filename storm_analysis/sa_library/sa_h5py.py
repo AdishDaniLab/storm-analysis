@@ -46,7 +46,7 @@ def loadLocalizations(filename, fields = None):
     This is convenience function for loading all the localizations in a
     HDF5 file. Only recommended for use on relatively small files.
     """
-    with SAH5Py(filename) as h5:
+    with SAH5Reader(filename) as h5:
         locs = h5.getLocalizations(fields = fields)
     return locs
 
@@ -55,7 +55,7 @@ def loadTracks(filename, fields = None):
     This is convenience function for loading all the tracks in a
     HDF5 file. Only recommended for use on relatively small files.
     """
-    with SAH5Py(filename) as h5:
+    with SAH5Reader(filename) as h5:
         tracks = h5.getTracks(fields = fields)
     return tracks
 
@@ -675,6 +675,26 @@ class SAH5Grid(SAH5Py):
             
         return image
 
+
+class SAH5Reader(SAH5Py):
+    """
+    HDF5 file read only access.
+
+    Use this if you only want to read the localization file. It won't
+    lock the file restricting it to a single process.
+    """
+    def __init__(self, filename = None):
+
+        # This used be close()
+        self.total_added = 0
+        
+        if os.path.exists(filename):
+            self.hdf5 = h5py.File(filename, "r")
+            self.existing = True
+        else:
+            raise SAH5PyException("file '" + filename + "' not found.")        
+        
+
         
 if (__name__ == "__main__"):
 
@@ -691,8 +711,13 @@ if (__name__ == "__main__"):
         print("File", sys.argv[1], "not found.")
         exit()
         
-    with SAH5Py(sys.argv[1]) as h5:
-        metadata = h5.getMetadata()
+    with SAH5Reader(sys.argv[1]) as h5:
+        try:
+            metadata = h5.getMetadata()
+        except SAH5PyException as ex:
+            print(ex)
+            metadata = None
+            
         if metadata is not None:
             metadata = ElementTree.fromstring(metadata)
 
