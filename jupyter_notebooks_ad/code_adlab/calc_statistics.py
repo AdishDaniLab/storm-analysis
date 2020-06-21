@@ -12,11 +12,11 @@ import matplotlib.pyplot as plt
 import numpy
 
 # Change directory
-os.chdir("D:/new-storm-data/06-13-20_analysis/1_3_brain_movies")
+os.chdir("/home/gayatri/Documents/")
 
 if (__name__ == "__main__"):
 
-    mlists = sorted(glob.glob('new_1_*.txt')) # Enter movie name format
+    mlists = sorted(glob.glob('list_old_min_500.txt')) # Enter movie name format
 
     for mlist in mlists:
         df = pd.read_csv(mlist,sep='\t')
