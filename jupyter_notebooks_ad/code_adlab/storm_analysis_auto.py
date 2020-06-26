@@ -120,7 +120,7 @@ if (__name__ == "__main__"):
             mFit.analyze(movie, h5, "analysis_settings_"+movie_name+".xml")
         else:
             makeSettingsFile(movie_name)
-            print('Made settings file, now let starting analysis')
+            print('Made settings file, now starting analysis')
             mFit.analyze(movie, h5, "analysis_settings_"+movie_name+".xml")
         
         
