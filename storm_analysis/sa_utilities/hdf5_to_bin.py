@@ -32,6 +32,8 @@ def hdf5ToBin(hdf5_name, bin_name):
         if h5.hasTracks():
             print("Converting tracks.")
             for tracks in h5.tracksIterator():
+                if "xsigma" in tracks:
+                    tracks["xsigma"] = tracks["xsigma"]/tracks["track_length"]
                 i3.addMultiFitMolecules(tracks, 1, nm_per_pixel)
 
         # Convert localizations.
