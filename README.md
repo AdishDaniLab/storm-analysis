@@ -1,5 +1,5 @@
 ## storm-analysis ##
-This is a repository of code developed in the [Zhuang lab](http://zhuang.harvard.edu/) and the  [Babcock lab](https://hazenbabcock.github.io/) for analysis of STORM movies.
+This is a repository of code developed in the [Zhuang lab](http://zhuang.harvard.edu/) for analysis of STORM movies.
 
 Some algorithms were developed in other groups and ported to Python. In this case the license applies only to our implementation of the code. If you plan to use the algorithm in a commercial product you should discuss this with the original developers ([IANAL](https://en.wikipedia.org/wiki/IANAL)).
 
@@ -52,6 +52,3 @@ Thanks to [Google Colaboratory](https://colab.research.google.com/notebooks/welc
 * [PyQt5](https://pypi.python.org/pypi/PyQt5)
 * [h5py](https://www.h5py.org/)
 * [astropy](http://www.astropy.org/)
-
-## General Notes ##
-Questions should be addressed to Hazen Babcock (hbabcock _at_ fas.harvard.edu)
