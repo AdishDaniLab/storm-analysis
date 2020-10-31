@@ -75,7 +75,7 @@ def createFromMultiFit(peaks, frame, nm_per_pixel):
     #        to change to a new format..
     #
     if "background" in peaks:
-        setI3Field(i3data, 'bg', peaks["background"])
+        setI3Field(i3data, 'bg', peaks["background"]*2)
     if "error" in peaks:
         setI3Field(i3data, 'i', peaks["error"])
     if "height" in peaks:
@@ -108,6 +108,8 @@ def createFromMultiFit(peaks, frame, nm_per_pixel):
         posSet(i3data, 'z', peaks["z"] * 1000.0)
     if "category" in peaks:
         setI3Field(i3data, 'c', peaks["category"])
+    if "track_length" in peaks:
+        setI3Field(i3data, 'tl', peaks["track_length"])
 
     return i3data
 
